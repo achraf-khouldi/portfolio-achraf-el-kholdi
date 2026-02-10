@@ -21,15 +21,14 @@ body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Rob
 .hero{position:relative;margin-top: 30px;}
 .hero-content{height:24rem;display:flex;align-items:center;padding:0 1.5rem;max-width:1100px;margin:0 auto}
 .hero-text{flex:1}
-.avatar{width:10rem;height:10rem;border-radius:9999px;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.5rem}
-.avatar img{width:100%;height:100%;object-fit:cover;border-radius:9999px}
+.avatar{width:10rem;height:10rem;border-radius:10px;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:1.5rempx }
 .hero-details{max-width:36rem}
 .hero h1{font-size:1.875rem;font-weight:700;margin-bottom:0.5rem}
 .hero .subtitle{font-size:1.125rem;color:rgba(255,255,255,0.8);margin-bottom:0.75rem}
 .hero .description{font-size:0.875rem;color:rgba(255,255,255,0.7);margin-bottom:1rem}
 .hero-buttons{display:flex;gap:0.75rem}
-.btn-primary{display:inline-block;padding:0.2rem 1rem;border-radius:0.2rem;background:linear-gradient(to right, #06b6d4, #7c3aed);color:#000;text-decoration:none;font-weight:500}
-.btn-secondary{display:inline-block;padding:0.2rem 1rem;border-radius:0.2rem;border:1px solid rgba(255,255,255,0.06);color:#fff;text-decoration:none}
+.btn-primary{display:inline-block;padding:0.2rem 1rem;border-radius:0.2rem;background:linear-gradient(to right, #a5a5a5, #1f1f1f);color:#ffffff;text-decoration:none;font-weight:500}
+.btn-secondary{display:inline-block;padding:0.2rem 1rem;border-radius:0.2rem;border:1px solid rgba(255, 255, 255, 0.151);color:#ffffff;text-decoration:none}
 .hero-bubbles{display:none;flex:1;position:relative}
 
 /* Sections */
@@ -96,6 +95,129 @@ body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Rob
 
 @media(min-width:1024px){
   .skills-grid{grid-template-columns:repeat(4,1fr)}
+}
+/* Hero split layout */
+.hero-content{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  height: 70vh;
+  padding: 0;
+}
+
+/* Left side image */
+.hero-text{
+  display: contents;
+}
+
+.avatar{
+  grid-column: 1 / 2;
+  width: 50%;
+  height: 50%;
+  margin: 0;
+  margin-left: 150px;
+  border-radius: 20px;
+}
+
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Right side content */
+.hero-details{
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  max-width: none;
+}
+
+/* Mobile fallback */
+@media (max-width: 768px){
+  .hero-content{
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .avatar{
+    height: 60vh;
+  }
+
+  .hero-details{
+    padding: 2rem 1.5rem;
+  }
+}
+#home {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgb(0, 0, 0) 3%, rgb(4, 1, 22) 38%, rgb(5, 4, 17) 68%, rgb(3, 0, 20) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
 }
 
 @media(max-width:767px){
